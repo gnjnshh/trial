@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gunjan Shah CV</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            color: #333; /* Dark grey text */
+            background-color: #ffffff; /* White background */
+        }
+
+        .container {
+            width: 80%;
+            max-width: 1100px;
+            margin: auto;
+            overflow: hidden;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: #003366; /* Dark Blue */
+            color: #ffffff; /* White text */
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #0059b3 3px solid; /* Lighter Blue */
+            display: flex; /* Use flexbox for layout */
+            align-items: center; /* Vertically align items */
+            flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+        }
+
+        header .container {
+             display: flex; /* Ensure container inside header also uses flex */
+             flex-direction: column; /* Stack items vertically */
+             align-items: center; /* Center items horizontally */
+             width: 100%; /* Make container take full width of header */
+             padding-top: 0; /* Adjust padding */
+             padding-bottom: 0;
+        }
+
+        .header-top { /* Container for profile, info/nav, and download button */
+            display: flex;
+            align-items: center; /* Align items vertically */
+            flex-wrap: wrap; /* Allow items to wrap */
+            justify-content: space-between; /* Space out items: profile/info-nav left, button right */
+            width: 100%; /* Take full width */
+            margin-bottom: 20px; /* Space below this section */
+        }
+
+        .header-left { /* New div to group profile and info/nav */
+            display: flex;
+            align-items: center; /* Align items vertically */
+            flex-wrap: wrap; /* Allow wrapping */
+            flex-grow: 1; /* Allow this section to take available space */
+        }
+
+        .header-info-nav { /* Group text and nav */
+            display: flex;
+            flex-direction: column; /* Stack text and nav vertically */
+            margin-left: 20px; /* Space between image and this block */
+        }
+
+
+        .header-content {
+            /* This div is no longer needed in the new structure */
+            display: none; /* Hide the old header-content */
+        }
+
+        .header-text {
+            margin-left: 0; /* Remove left margin, handled by header-info-nav */
+            text-align: left; /* Align text to the left */
+        }
+
+        header h1 {
+            float: none; /* Remove float */
+            margin: 0;
+            font-size: 2em;
+        }
+
+        header p {
+            float: none; /* Remove float */
+            margin-left: 0;
+            padding-top: 5px; /* Adjust padding */
+            font-style: italic;
+            color: #cccccc; /* Light grey */
+            font-size: 1.1em;
+        }
+
+        header nav {
+            float: none; /* Remove float */
+            margin-top: 10px; /* Add space above nav */
+            width: auto; /* Allow nav to take its natural width */
+            text-align: left; /* Align nav list to the left */
+        }
+
+        header nav ul {
+             padding: 0; /* Remove default list padding */
+             margin: 0; /* Remove default list margin */
+        }
+
+        header li {
+            display: inline-block; /* Use inline-block for better spacing control */
+            padding: 0 10px; /* Adjust padding */
+        }
+
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 1em; /* Adjust font size */
+            transition: color 0.3s ease;
+        }
+
+        header a:hover {
+            color: #aaccff; /* Lighter blue on hover */
+        }
+
+        /* Profile Image Styling */
+        .profile-img {
+            width: 100px; /* Set a fixed width for the image */
+            height: 100px; /* Set a fixed height for the image */
+            border-radius: 50%; /* Make the image round */
+            border: 3px solid #0059b3; /* Add a border */
+            object-fit: cover; /* Ensure the image covers the area without distortion */
+            display: block; /* Remove extra space below the image */
+        }
+
+        /* Download Button Styling */
+        .download-button {
+            display: inline-block; /* Allows padding and margin */
+            background-color: #ffcc00; /* Eye-catching yellow */
+            color: #003366; /* Dark blue text */
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            /* Removed margin-top */
+            margin-left: 20px; /* Add space from nav */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .download-button:hover {
+            background-color: #e6b800; /* Darker yellow on hover */
+            transform: translateY(-2px); /* Slight lift effect */
+        }
+
+
+        /* Sections */
+        .section {
+            padding: 40px 0;
+            border-bottom: 1px solid #eee; /* Light grey border */
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #003366; /* Dark Blue */
+            text-transform: uppercase;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Center the bubbles */
+            gap: 15px; /* Space between bubbles */
+            margin-top: 20px;
+        }
+
+        .skill-bubble {
+            background-color: #eaf2f8; /* Very light blue background */
+            color: #003366; /* Dark blue text */
+            padding: 10px 20px;
+            border-radius: 20px; /* Rounded corners for bubble effect */
+            border: 1px solid #d1e0ec;
+            font-size: 1em;
+            white-space: nowrap; /* Prevent text wrapping */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .skill-bubble:hover {
+            background-color: #d1e0ec; /* Slightly darker on hover */
+            transform: translateY(-3px); /* Slight lift effect */
+        }
+
+
+        /* Experience Timeline */
+        .timeline-container {
+            position: relative;
+            margin-bottom: 20px; /* Space before details */
+            display: flex; /* Use flexbox for layout */
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .timeline {
+            position: relative;
+            width: 100%;
+            padding: 20px 0;
+            display: flex; /* Allow items to sit side-by-side */
+            overflow-x: auto; /* Enable horizontal scroll if needed */
+            padding-bottom: 10px; /* Space for scrollbar if it appears */
+            justify-content: center; /* Center items if they don't overflow */
+        }
+
+        /* Add a visual line (optional, can be complex with pure CSS for horizontal) */
+        /* .timeline::before { content: ''; position: absolute; left: 0; top: 50%; width: 100%; height: 2px; background: #ccc; z-index: -1; } */
+
+        .timeline-item {
+            background: #f4f4f4; /* Light grey background */
+            padding: 10px 15px;
+            margin: 0 10px; /* Space between items */
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid #003366; /* Dark blue accent */
+            flex-shrink: 0; /* Prevent items from shrinking */
+            width: 180px; /* Fixed width for consistency */
+            text-align: center;
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-item.active {
+            background: #0059b3; /* Lighter blue for active */
+            color: white;
+            border-left-color: #003366; /* Dark blue accent */
+        }
+
+        .timeline-item h4 {
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+        .timeline-item p {
+            font-size: 0.8em;
+            color: #555;
+        }
+        .timeline-item.active p {
+             color: #eee; /* Lighter text color when active */
+        }
+
+        .timeline-nav {
+            margin-top: 15px;
+        }
+
+        .timeline-nav button {
+            background: #003366;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 0 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .timeline-nav button:hover {
+            background: #0059b3;
+        }
+
+        .timeline-details { /* Generic class for details area */
+            margin-top: 20px;
+            padding: 20px;
+            background: #eaf2f8; /* Very light blue background */
+            border-radius: 5px;
+            border: 1px solid #d1e0ec;
+            min-height: 100px; /* Ensure it has some height even when empty */
+        }
+        .timeline-details h3 {
+            margin-bottom: 10px;
+            color: #003366;
+        }
+
+        /* Education & Projects */
+        .education-item, .project-item {
+            background: #f9f9f9; /* Slightly off-white */
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 5px solid #0059b3; /* Lighter Blue */
+            border-radius: 3px;
+        }
+
+        .education-item h3, .project-item h3 {
+            color: #003366; /* Dark Blue */
+            margin-bottom: 5px;
+        }
+
+        .education-item p, .project-item p, .project-item li {
+            margin-bottom: 5px;
+        }
+
+        .project-item ul {
+            margin-left: 20px;
+            list-style: disc;
+        }
+
+        /* Contact */
+        #contact { /* Added styling for the contact section */
+             padding: 40px 0;
+             border-bottom: 1px solid #eee;
+             text-align: center; /* Center contact info */
+        }
+
+        #contact h2 {
+            margin-bottom: 20px; /* Adjusted margin */
+            color: #003366;
+            text-transform: uppercase;
+        }
+
+        #contact p {
+            margin-bottom: 10px; /* Space between contact lines */
+        }
+
+        #contact a {
+            color: #0059b3;
+            text-decoration: none;
+        }
+
+        #contact a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: #003366; /* Dark Blue */
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        /* Responsiveness */
+        @media(max-width: 768px) {
+            header {
+                flex-direction: column; /* Stack items vertically */
+                padding-top: 20px;
+                padding-bottom: 20px;
+            }
+            header .container {
+                 flex-direction: column;
+            }
+            .header-top { /* Adjust header-top on small screens */
+                flex-direction: column;
+                text-align: center;
+                margin-bottom: 15px; /* Reduce space below top section */
+            }
+             .header-left { /* Adjust header-left on small screens */
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 15px; /* Space below this section */
+             }
+            .header-info-nav { /* Adjust info/nav container on small screens */
+                 margin-left: 0;
+                 margin-top: 15px; /* Add space above info/nav */
+                 align-items: center; /* Center items within this container */
+            }
+            .header-text {
+                margin-left: 0;
+                text-align: center; /* Center text on small screens */
+            }
+            header nav {
+                margin-top: 10px; /* Space above nav */
+                text-align: center; /* Center nav list on small screens */
+            }
+            header li {
+                display: block;
+                padding: 5px 0;
+                text-align: center;
+            }
+            .container {
+                width: 95%;
+                padding: 0 10px;
+            }
+            .timeline {
+                justify-content: flex-start; /* Align items to start on smaller screens */
+            }
+             #contact { /* Adjust contact section on small screens */
+                padding: 20px 0;
+             }
+             #contact h2 {
+                margin-bottom: 15px;
+             }
+             .download-button {
+                 margin-top: 15px; /* Add space above the button on small screens */
+                 margin-left: 0; /* Remove left margin on small screens */
+             }
+        }
+
+        /* Animation trigger class */
+        /* Removed skill bar animation classes as they are no longer used */
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="header-left"> <img src="profile_photo.jpg" alt="Gunjan Shah Profile Photo" class="profile-img">
+
+                    <div class="header-info-nav">
+                        <div class="header-text">
+                            <h1>Gunjan Shah</h1>
+                            <p>Financial Analyst</p>
+                        </div>
+                        <nav>
+                            <ul>
+                                <li><a href="#contact">Contact Me</a></li>
+                                <li><a href="#about">About Me</a></li>
+                                <li><a href="#education">Education</a></li>
+                                <li><a href="#experience">Work Experience</a></li>
+                                <li><a href="#skills">Skills</a></li>
+                                <li><a href="#projects">Projects</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <a href="download CV.pdf" download class="download-button">Download CV</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="contact" class="container section">
+        <h2>Contact Me</h2> <p>Email: <a href="mailto:gnjnshh@gmail.com">gnjnshh@gmail.com</a> </p>
+        <p>Mobile Phone: +91 7567206024 </p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/gunjan-shah-24b613140/" target="_blank">linkedin.com/in/gunjan-shah-24b613140/</a></p> </section>
+
+    <section id="about" class="container section">
+        <h2>About Me</h2>
+        <p>Financial Analyst with over 5 years of experience in financial risk assessment, credit analysis, and data analytics. Contributed to financial institutions through payment modernization, data and AI advancements, and risk mitigation using tools such as Python, SQL, and Excel. Notable projects include supporting business development through detailed credit memos and internal audit procedures. Aiming to leverage analytical skills to make data-driven recommendations and take product initiatives. </p>
+    </section>
+
+    <section id="education" class="container section">
+        <h2>Education</h2>
+        <div class="timeline-container">
+            <div class="timeline" id="education-timeline">
+                 </div>
+             <div class="timeline-nav">
+                <button id="prev-edu">&lt; Prev</button>
+                <button id="next-edu">Next &gt;</button>
+            </div>
+        </div>
+        <div id="education-details" class="timeline-details">
+            </div>
+    </section>
+
+    <section id="experience" class="container section">
+        <h2>Work Experience</h2>
+        <div class="timeline-container">
+            <div class="timeline" id="experience-timeline">
+                 </div>
+             <div class="timeline-nav">
+                <button id="prev-exp">&lt; Prev</button>
+                <button id="next-exp">Next &gt;</button>
+            </div>
+        </div>
+        <div id="experience-details" class="timeline-details">
+            </div>
+    </section>
+
+    <section id="skills" class="container section">
+        <h2>Skills</h2>
+        <p>In-depth understanding of company's financial statements, knowledge of IFRS, IndAS, and US GAAP accounting standards/treatments, finance and economics theories, valuation of equity, derivatives, fixed income, and other asset classes, data manipulation, data visualization, data analysis, Excel, Python, SQL, financial modelling, scenario analysis, web scraping, analytical skills, numerical skills, articulative skills, presenting to an audience, content writing, Google Sheets and Statistics. </p>
+        <div class="skills-container">
+            <div class="skill-bubble">Excel</div>
+            <div class="skill-bubble">Python</div>
+            <div class="skill-bubble">Financial Modelling</div>
+            <div class="skill-bubble">Derivatives</div>
+            <div class="skill-bubble">Fixed Income</div>
+            <div class="skill-bubble">Data Analysis</div>
+            <div class="skill-bubble">Data Visualization</div>
+            <div class="skill-bubble">SQL</div>
+            <div class="skill-bubble">Credit Risk</div>
+            <div class="skill-bubble">VBA</div>
+            <div class="skill-bubble">Financial Analysis</div>
+        </div>
+        </section>
+
+    <section id="projects" class="container section">
+        <h2>Projects</h2>
+        <div class="project-item">
+            <h3>Bloomberg Trading Challenge</h3>
+            <p><i>Jan 2023 - Dec 2023</i></p>
+            <ul>
+                <li>Defined market assumptions</li>
+                <li>Developed a return-generating strategy</li>
+                <li>Executed trades within a closed network</li>
+                <li>Developed familiarity with Bloomberg terminal and US markets</li>
+            </ul>
+        </div>
+        <div class="project-item">
+            <h3>Summer Analyst Capstone Project from Citi, NY</h3>
+            <p><i>Jan 2023 - Dec 2023</i></p>
+             <ul>
+                <li>Analyzed and presented the fintech and mortgage buying industry</li>
+                <li>Focused on the business practices and risk mitigation framework of Rocket Mortgage</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="year"></span> Gunjan Shah. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // Set current year in footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            // --- Scroll to Top on Load ---
+             window.onload = function() {
+                 window.scrollTo(0, 0);
+             };
+
+
+            // --- Skill Bar Animation ---
+            // Removed skill bar animation logic as it's no longer used
+
+
+            // --- Interactive Timeline Functions ---
+
+            // Generic function to populate a timeline
+            function populateTimeline(timelineElementId, detailsElementId, data) {
+                const timelineElement = document.getElementById(timelineElementId);
+                const detailsElement = document.getElementById(detailsElementId);
+
+                if (!timelineElement || !detailsElement) {
+                    console.error(`Timeline elements not found for ${timelineElementId} or ${detailsElementId}`);
+                    return;
+                }
+
+                timelineElement.innerHTML = ''; // Clear existing items
+
+                data.forEach((itemData, index) => {
+                    const item = document.createElement('div');
+                    item.classList.add('timeline-item');
+                    item.dataset.index = index; // Store index for easy access
+                    // Display institution/company, degree/title, and the full date range
+                    item.innerHTML = `<h4>${itemData.institution || itemData.company}</h4><p>${itemData.degree || itemData.title}</p><p><i>${itemData.dates}</i></p>`;
+
+                    item.addEventListener('click', () => {
+                        displayDetails(detailsElementId, data, index);
+                    });
+
+                    timelineElement.appendChild(item);
+                });
+
+                 // Display initial details
+                if (data.length > 0) {
+                    displayDetails(detailsElementId, data, 0);
+                } else {
+                     detailsElement.innerHTML = '<p>No details to display.</p>';
+                }
+            }
+
+            // Generic function to display details for a timeline item
+            function displayDetails(detailsElementId, data, index) {
+                 const detailsElement = document.getElementById(detailsElementId);
+                 const timelineElement = detailsElement.previousElementSibling.querySelector('.timeline'); // Get the corresponding timeline
+
+                 if (index < 0 || index >= data.length) return; // Boundary check
+
+                 const itemData = data[index];
+                 let detailsHTML = `<h3>${itemData.degree || itemData.title} at ${itemData.institution || itemData.company}</h3>`;
+                 detailsHTML += `<p><i>${itemData.location} | ${itemData.dates}</i></p>`;
+
+                 if (itemData.details && itemData.details.length > 0) {
+                     detailsHTML += '<ul>';
+                     itemData.details.forEach(detail => {
+                         detailsHTML += `<li>${detail}</li>`;
+                     });
+                     detailsHTML += '</ul>';
+                 }
+
+
+                 detailsElement.innerHTML = detailsHTML;
+
+                 // Update active state on timeline items
+                 const timelineItems = timelineElement.querySelectorAll('.timeline-item');
+                 timelineItems.forEach((item, i) => {
+                    if (i === index) {
+                        item.classList.add('active');
+                        // Optional: Scroll the active item into view if the timeline overflows
+                        item.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+
+                // Update navigation button states (basic implementation)
+                const prevButton = timelineElement.nextElementSibling.querySelector('button:first-child');
+                const nextButton = timelineElement.nextElementSibling.querySelector('button:last-child');
+
+                if (prevButton) prevButton.disabled = index === 0;
+                if (nextButton) nextButton.disabled = index === data.length - 1;
+            }
+
+            // --- Education Data ---
+            const educationData = [
+                 {
+                    institution: "University of Connecticut (UCONN)",
+                    location: "Stamford, CT, USA",
+                    degree: "Master's in Science (MSc) in Financial Risk Management (FRM)",
+                    dates: "Aug 2022 – Dec 2023",
+                    details: [] // Add specific details if needed
+                },
+                {
+                    institution: "Chartered Financial Analyst (CFA) Institute",
+                    location: "Mumbai, India",
+                    degree: "Level III Candidate of Chartered Financial Analyst (CFA) program",
+                    dates: "2018 - 2022",
+                    details: []
+                },
+                 {
+                    institution: "Association of Chartered Certified Accountants (ACCA)",
+                    location: "Mumbai, India",
+                    degree: "Affiliate Member (IFRS accounting, Audit, and Assurance, Financial Management, Corporate Law, and Taxation)",
+                    dates: "Jan 2016 - Jan 2018",
+                    details: []
+                },
+                 {
+                    institution: "Institute of Management (IIM) Indore",
+                    location: "Indore, India",
+                    degree: "Business Analytics (IPBA)",
+                    dates: "Jan 2019 - Jan 2020",
+                    details: []
+                },
+                 {
+                    institution: "Gujarat University",
+                    location: "Ahmedabad, India",
+                    degree: "Bachelor of Commerce (B.com)",
+                    dates: "Jan 2014 - Jan 2017",
+                    details: []
+                }
+            ];
+
+
+            // --- Experience Data ---
+            const experienceData = [
+                {
+                    company: "Datanimbus, INC",
+                    location: "Plano, TX, USA",
+                    title: "Business Development Analyst",
+                    dates: "Apr 2024 – Nov 2024",
+                    details: [
+                        "Supported business development and sales teams by assisting account executives, writing database queries, and building insightful tools for data-driven decision making.",
+                        "Led qualitative and quantitative analysis on the Datanimbus Finhub platform, empowering Financial Institutions with data and AI-driven advancements for new revenue streams, operational efficiency, and risk mitigation.",
+                        "Developed and maintained automated reports utilizing SQL and Python, providing actionable insights to internal business stakeholders and external partners."
+                    ]
+                },
+                {
+                    company: "University of Connecticut, Stamford",
+                    location: "Stamford, CT, USA",
+                    title: "Math Tutor",
+                    dates: "Sept 2023 - Dec 2023",
+                    details: [
+                        "Conducted personalized tutoring sessions for students at the University of Connecticut, Stamford, specializing in a comprehensive range of mathematical disciplines, including Algebra, Geometry, and Advanced Trigonometry, successfully clarifying concepts and solving queries to enhance academic performance.",
+                        "Awarded 'Tutor of the Month' for September '23."
+                    ]
+                },
+                {
+                    company: "Citicorp Services India Pvt. Ltd (Citi Group)",
+                    location: "Mumbai, India",
+                    title: "Credit Analyst",
+                    dates: "Jan 2021 - Jan 2022",
+                    details: [
+                        "Worked in the Independent Risk Assessment Unit (IRAU) of the bank.",
+                        "Performed fundamental credit analysis and communicated key findings in yearly and quarterly credit memos to various stakeholders for Banks, NBCF's and other financial institutions for India, Sri Lanka, and Bangladesh region.",
+                        "Conducted presentations on quarterly results of the portfolio companies to multiple teams, including Risk and Banking seniors."
+                     ]
+                },
+                 {
+                    company: "Morningstar India Financial Services",
+                    location: "Mumbai, India",
+                    title: "Research Associate",
+                    dates: "Sept 2019 - March 2020",
+                    details: [
+                        "Worked under the Pitchbook team, which provides financial data on VC, PE, and M&A space covering the global market.",
+                        "Collated key data points on private companies in Venture Capital and Early-Stage space primarily in the NA (North America) region.",
+                        "Showcased the private market ecosystem, including various types of funding, key deals, management, business model for various start-ups and early-stage companies on the platform."
+                     ]
+                },
+                 {
+                    company: "N C Chhajed & Associates Chartered Accountants",
+                    location: "Mumbai, India",
+                    title: "Audit Assistant",
+                    dates: "Jan 2016 - Jan 2019",
+                    details: [
+                        "Performed audit procedures on specific financial line items under the supervision of senior team members with the objective of ensuring that the financial statements are prepared, in all material aspects, in accordance with the applicable financial reporting framework.",
+                        "Carried internal audit of the company's books of accounts and finalization of books & financial statements.",
+                        "Assisted with tax audits and tax returns."
+                    ]
+                }
+            ];
+
+            // --- Initialize Timelines ---
+            populateTimeline('education-timeline', 'education-details', educationData);
+            populateTimeline('experience-timeline', 'experience-details', experienceData);
+
+
+            // --- Timeline Navigation ---
+            function setupTimelineNavigation(timelineId, detailsId, data) {
+                 const timelineElement = document.getElementById(timelineId);
+                 const prevButton = timelineElement.nextElementSibling.querySelector('button:first-child');
+                 const nextButton = timelineElement.nextElementSibling.querySelector('button:last-child');
+                 let currentIndex = 0; // Start at the first item
+
+                 // Find the initial active item index
+                 const initialActiveItem = timelineElement.querySelector('.timeline-item.active');
+                 if(initialActiveItem) {
+                     currentIndex = parseInt(initialActiveItem.dataset.index) || 0;
+                 }
+
+
+                 if (prevButton && nextButton) {
+                    prevButton.addEventListener('click', () => {
+                        if (currentIndex > 0) {
+                            currentIndex--;
+                            displayDetails(detailsId, data, currentIndex);
+                        }
+                    });
+
+                    nextButton.addEventListener('click', () => {
+                        if (currentIndex < data.length - 1) {
+                            currentIndex++;
+                            displayDetails(detailsId, data, currentIndex);
+                        }
+                    });
+                }
+            }
+
+            // Setup navigation for both timelines
+            setupTimelineNavigation('education-timeline', 'education-details', educationData);
+            setupTimelineNavigation('experience-timeline', 'experience-details', experienceData);
+
+
+        });
+
+    </script>
+</body>
+</html>
